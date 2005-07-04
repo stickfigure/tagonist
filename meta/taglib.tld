@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+-->
+
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+		version="2.0">
+
+	<description>
+		Tagonist is a simple tag library that allows you to build
+		Model-View-Controller web applications with simple JSPs.
+		Tagonist provides a well-defined boundary between Java and
+		JSP presentation.
+	</description>
+	
+	<tlib-version>1.0</tlib-version>
+	
+	<short-name>tagonist</short-name>
+	
+	<uri>http://www.tagonist.org/tagonist</uri>
+	
+	<tag>
+		<description>
+			Instantiates an Action class.
+		</description>
+		
+		<name>action</name>
+		<tag-class>org.tagonist.ActionTag</tag-class>
+		<body-content>scriptless</body-content>
+
+		<attribute>
+			<name>var</name>
+		</attribute>
+		<attribute>
+			<name>type</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>scope</name>
+		</attribute>
+		<attribute>
+			<name>recycle</name>
+		</attribute>
+	</tag>
+
+	<tag>
+		<description>
+			Passes a param to the action class.  Must be nested
+			within the Action tag.
+		</description>
+		
+		<name>param</name>
+		<tag-class>org.tagonist.ParamTag</tag-class>
+		<body-content>empty</body-content>
+
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+		</attribute>
+	</tag>
+</taglib>

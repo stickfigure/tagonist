@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="jar" name="tagonist">
+
+	<!-- Include other stuff specified by the user -->
+	<property file="build.properties"/>
+	<property file="${user.home}/build.properties"/>
+	
+	<!-- Basic build stuff -->
+	<property name="build.dir" location="build"/>
+
+	<property name="meta.dir" location="meta"/>
+	<property name="javasrc.dir" location="src"/>
+	<property name="lib.dir" location="lib"/>
+	
+	<property name="build.classes.dir" location="${build.dir}/classes"/>
+	<property name="build.jar.file" location="${build.dir}/${ant.project.name}.jar"/>
+	<property name="build.javadoc.dir" location="${build.dir}/api"/>
+	
+	<path id="master.classpath">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<property name="debug" value="on"/>
+	<property name="deprecation" value="off"/>
+
+
+	<target name="clean">
+		<delete dir="${build.dir}"/>
+	</target>
+
+ 	<target name="classes">
+		<mkdir dir="${build.classes.dir}"/>
+		
+		<javac debug="${debug}" deprecation="${deprecation}" destdir="${build.classes.dir}" srcdir="${javasrc.dir}">
+			<classpath refid="master.classpath"/>
+			<compilerarg value="-Xlint:unchecked"/>
+		</javac>
+	</target>
+
+	<target name="jar" depends="classes">
+		<jar jarfile="${build.jar.file}">
+			<metainf dir="${meta.dir}"/>
+			
+			<fileset dir="${build.classes.dir}">
+				<include name="**/*.class"/>
+			</fileset>
+		</jar>
+	</target>
+
+	<target name="javadoc">
+		<mkdir dir="${build.javadoc.dir}"/>
+		
+		<javadoc sourcepath="${javasrc.dir}"
+			destdir="${build.javadoc.dir}"
+			packagenames="*"
+			classpathref="master.classpath"
+			author="true"
+			version="true"
+		/>
+	</target>
+	
+	<import file="examples/friendbook/build.xml"/>
+
+	<target name="deploy" depends="jar">
+		<copy file="${build.jar.file}" todir="../Similarity/frontend/lib" />
+	</target>
+
+	<target name="deploy-fb" depends="fb-war">
+		<copy file="${fb.build.war.file}" todir="/java/jboss-5.0.0alpha/server/default/deploy" />
+	</target>
+</project>

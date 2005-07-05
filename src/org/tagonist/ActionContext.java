@@ -10,6 +10,9 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.PageContext;
 
 /**
+ * Interface that provides container APIs to action classes.
+ * 
+ * @author Jeff Schnitzer
  */
 public interface ActionContext 
 {

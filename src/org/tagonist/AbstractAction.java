@@ -5,7 +5,7 @@ package org.tagonist;
 import org.apache.commons.beanutils.BeanUtils;
 
 /**
- * Client developers should extend this class rather than implement Action
+ * Client developers typically extend this class rather than implement Action
  * themselves.  It provides for population of bean properties on the model
  * from the http request parameters.
  * 

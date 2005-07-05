@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<project name="friendbook" default="war" basedir=".">
+<project name="friendbook" default="fb-war" basedir=".">
 
 	<dirname property="fb.basedir" file="${ant.file.friendbook}"/>
 	
@@ -34,7 +34,6 @@
 				debug="${debug}">
 			<classpath refid="fb.classpath" />
 			
-			<exclude name="org/tagonist/friendbook/ctl/**"/>
 		</javac>
 	</target>
 

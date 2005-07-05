@@ -17,6 +17,9 @@
 	<property name="build.jar.file" location="${build.dir}/${ant.project.name}.jar"/>
 	<property name="build.javadoc.dir" location="${build.dir}/api"/>
 	
+	<property name="build.dist.dir" location="${build.dir}/${ant.project.name}-${build.version}"/>
+	<property name="build.dist.zip" location="${build.dir}/${ant.project.name}-${build.version}.zip"/>
+
 	<path id="master.classpath">
 		<fileset dir="${lib.dir}">
 			<include name="**/*.jar" />
@@ -62,12 +65,47 @@
 		/>
 	</target>
 	
+	<import file="examples/demo/build.xml"/>
 	<import file="examples/friendbook/build.xml"/>
+	
+	<target name="examples" depends="demo-war, fb-war"/>
+	
+	<target name="dist" depends="examples, javadoc">
+		<copy todir="${build.dist.dir}">
+			<fileset dir=".">
+				<include name="src/**" />
+				<include name="meta/**" />
+				<include name="lib/**" />
+				
+				<include name="build/${ant.project.name}.jar" />
+				<include name="build/*.war" />
+				<include name="build/api/**" />
+				
+				<include name="examples/**" />
+				
+				<include name="build.properties" />
+				<include name="build.xml" />
+				<include name="LICENSE.txt" />
+				<include name="README.html" />
+			</fileset>
+		</copy>
+		
+		<dirname property="build.dist.dir.dirname" file="${build.dist.dir}" />
+		<basename property="build.dist.dir.basename" file="${build.dist.dir}" />
+		
+		<zip zipfile="${build.dist.zip}" basedir="${build.dist.dir.dirname}">
+			<include name="${build.dist.dir.basename}/**" />
+		</zip>
+	</target>
 
 	<target name="deploy" depends="jar">
 		<copy file="${build.jar.file}" todir="../Similarity/frontend/lib" />
 	</target>
 
+	<target name="deploy-demo" depends="demo-war">
+		<copy file="${demo.build.war.file}" todir="/java/jboss-5.0.0alpha/server/default/deploy" />
+	</target>
+	
 	<target name="deploy-fb" depends="fb-war">
 		<copy file="${fb.build.war.file}" todir="/java/jboss-5.0.0alpha/server/default/deploy" />
 	</target>

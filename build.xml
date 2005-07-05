@@ -70,7 +70,7 @@
 	
 	<target name="examples" depends="demo-war, fb-war"/>
 	
-	<target name="dist" depends="examples, javadoc">
+	<target name="dist" depends="clean, examples, javadoc">
 		<copy todir="${build.dist.dir}">
 			<fileset dir=".">
 				<include name="src/**" />
@@ -86,7 +86,9 @@
 				<include name="build.properties" />
 				<include name="build.xml" />
 				<include name="LICENSE.txt" />
-				<include name="README.html" />
+			</fileset>
+			<fileset dir="www">
+				<include name="**/*.html"/>
 			</fileset>
 		</copy>
 		

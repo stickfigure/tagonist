@@ -103,7 +103,7 @@ public class GetUser extends AbstractAction
 	
 	public void execute() throws Exception
 	{
-		UserDetail detail = getUserDetail(id);
+		UserDetail detail = getUserDetail(this.userId);
 			
 		this.getCtx().setModel(detail);
 	}
@@ -117,7 +117,10 @@ public class GetUser extends AbstractAction
 	
 	<ul>
 		<li>
-			Bean properties are populated from the HTTP request parameters.  In this example, the URL would be invoked
+			An instance of the action class is instantiated every time the action tag is invoked.
+		</li>
+		<li>
+			Bean properties on the action instance are populated from the HTTP request parameters.  In this example, the URL would be invoked
 			like this:  http://www.example.com/bookmarks.jsp?userId=42
 		</li>
 		<li>An <code>ActionContext</code> is available to the action, which provides access to the servlet objects</li>

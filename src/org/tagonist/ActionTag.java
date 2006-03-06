@@ -50,9 +50,9 @@ public class ActionTag extends TagSupport implements ActionContext
 	public void setScope(String value) { this.scope = value; }
 	
 	/** */
-	protected boolean recycle;
-	public boolean getRecycle() { return this.recycle; }
-	public void setRecycle(boolean value) { this.recycle = value; }
+	protected boolean force;
+	public boolean getForce() { return this.force; }
+	public void setForce(boolean value) { this.force = value; }
 
 	/**
 	 * Lazily created Map of action parameters.
@@ -177,11 +177,8 @@ public class ActionTag extends TagSupport implements ActionContext
 		}
 		
 		// Check to see if we should just recycle existing object
-		if (this.recycle)
+		if (this.var != null && !this.force)
 		{
-			if (this.var == null)
-				throw new IllegalStateException("You cannot recycle if you do not specify a var");
-			
 			if (this.pageContext.findAttribute(this.var) != null)
 				return SKIP_BODY;
 		}

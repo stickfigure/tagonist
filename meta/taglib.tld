@@ -42,7 +42,7 @@
 			<name>scope</name>
 		</attribute>
 		<attribute>
-			<name>recycle</name>
+			<name>force</name>
 		</attribute>
 	</tag>
 

@@ -8,7 +8,8 @@ import javax.servlet.jsp.tagext.TagSupport;
 /**
  * JSP custom tag designed to be nested within an ActionTag, allows passing
  * special parameters which can be recognized by actions.  Not the same as
- * http request parameters.
+ * http request parameters, although Action implementations may choose to
+ * populate models from this collection.
  * 
  * @author Jeff Schnitzer
  */

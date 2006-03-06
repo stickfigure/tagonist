@@ -28,6 +28,8 @@
 
 	<property name="debug" value="on"/>
 	<property name="deprecation" value="off"/>
+	<property name="target" value="1.4"/>
+	<property name="source" value="1.4"/>
 
 
 	<target name="clean">
@@ -37,7 +39,7 @@
  	<target name="classes">
 		<mkdir dir="${build.classes.dir}"/>
 		
-		<javac debug="${debug}" deprecation="${deprecation}" destdir="${build.classes.dir}" srcdir="${javasrc.dir}">
+		<javac target="${target}" source="${source}" debug="${debug}" deprecation="${deprecation}" destdir="${build.classes.dir}" srcdir="${javasrc.dir}">
 			<classpath refid="master.classpath"/>
 			<compilerarg value="-Xlint:unchecked"/>
 		</javac>

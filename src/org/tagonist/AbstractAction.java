@@ -51,7 +51,10 @@ public abstract class AbstractAction implements Action
 		
 		Object model = this.getCtx().getModel();
 		if (model != null)
+		{
 			BeanUtils.populate(model, this.getCtx().getRequest().getParameterMap());
+			BeanUtils.populate(model, this.getCtx().getActionParams());
+		}
 	
 		this.execute();
 	}

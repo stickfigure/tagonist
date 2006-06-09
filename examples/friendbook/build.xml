@@ -36,8 +36,21 @@
 			
 		</javac>
 	</target>
+	
+	<target name="fb-propertize" depends="fb-classes">
+		<taskdef name="propertize" classname="org.tagonist.propertize.PropertizeTask">
+			<classpath>
+				<path refid="fb.classpath" />
+				<pathelement location="${fb.build.classes.dir}"/>
+			</classpath>
+		</taskdef>
+		
+		<propertize verbose="true">
+			<fileset dir="${fb.build.classes.dir}"/>
+		</propertize>
+	</target>
 
-	<target name="fb-war" depends="fb-classes">
+	<target name="fb-war" depends="fb-propertize">
 		<dirname property="tagonist.jar.dirname" file="${build.jar.file}"/>
 		<basename property="tagonist.jar.basename" file="${build.jar.file}"/>
 			

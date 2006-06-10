@@ -57,6 +57,10 @@
 			Is composed of 8 java classes and less than 500 lines of code (including whitespace).
 			Anyone can see how it works.
 		</li>
+		<li>
+			An ant task called the "propertizer" that automatically generates
+			getter and setter methods when you annotate fields with @Property.
+		</li>
 	</ul>
 	
 	<h2>Simple JSP Pages</h2>
@@ -201,7 +205,7 @@ public class Signup extends AbstractAction
 	
 	public void execute() throws Exception
 	{
-		if (this.email == null || this.email.indexOf('@') < 0)
+		if (this.email == null || this.email.indexOf('@') &lt; 0)
 			this.error = "That is not a valid email address";
 		else
 			signupPerson(this.email);
@@ -230,6 +234,31 @@ public class Signup extends AbstractAction
 		</li>
 	</ol>
 	
+	<h2>Propertize</h2>
+	<p>
+		The optional propertizer is a special ant task that uses bytecode manipulation to eliminate
+		all the typing of getters and setters.  The above classfile can be:
+	</p>
+	<pre>
+/** Signup.java:  Form processing action for signup */
+public class Signup extends AbstractAction
+{
+	@Property String email;
+	@Property String error;
+	
+	public void execute() throws Exception
+	{
+		if (this.email == null || this.email.indexOf('@') &lt; 0)
+			this.error = "That is not a valid email address";
+		else
+			signupPerson(this.email);
+	}
+}
+	</pre>
+	<p>
+		The friendbook build file shows how to use the PropertizeTask.  This task
+		can also be used without tagonist.
+	</p>
 	
 	<h2>Conclusion</h2>
 	<p>
@@ -248,9 +277,9 @@ public class Signup extends AbstractAction
 	<ul>
 		<li><strong>1.0</strong> - Initial release</li>
 		<li>
-			<strong>1.0.1</strong> - Replaced "recycle" attribute with "force",
+			<strong>1.1</strong> - Replaced "recycle" attribute with "force",
 			which has inverted meaning.  AbstractAction now populates bean properties
-			with action params.  Rebuilt with JRE target of 1.4 instead of 1.5.
+			with action params.  Added Propertizer and example.
 		</li>
 	</ul>
 

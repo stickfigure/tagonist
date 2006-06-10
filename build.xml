@@ -17,9 +17,6 @@
 	<property name="build.jar.file" location="${build.dir}/${ant.project.name}.jar"/>
 	<property name="build.javadoc.dir" location="${build.dir}/api"/>
 	
-	<property name="build.dist.dir" location="${build.dir}/${ant.project.name}-${build.version}"/>
-	<property name="build.dist.zip" location="${build.dir}/${ant.project.name}-${build.version}.zip"/>
-
 	<path id="master.classpath">
 		<fileset dir="${lib.dir}">
 			<include name="**/*.jar" />
@@ -36,7 +33,16 @@
 		<delete dir="${build.dir}"/>
 	</target>
 
- 	<target name="classes">
+	<target name="init">
+		<tstamp/>
+		<property name="build.version" value="UNVERSIONED"/>
+	</target>
+	
+	<target name="input-version">
+		<input addproperty="build.version" message="Version number?" />
+	</target>
+	
+ 	<target name="classes" depends="init">
 		<mkdir dir="${build.classes.dir}"/>
 		
 		<javac target="${target}" source="${source}" debug="${debug}" deprecation="${deprecation}" destdir="${build.classes.dir}" srcdir="${javasrc.dir}">
@@ -52,6 +58,11 @@
 			<fileset dir="${build.classes.dir}">
 				<include name="**/*.class"/>
 			</fileset>
+			
+			<manifest>
+				<attribute name="Specification-Version" value="${build.version}" />
+				<attribute name="Implementation-Version" value="${TODAY}" />
+			</manifest>
 		</jar>
 	</target>
 
@@ -72,7 +83,10 @@
 	
 	<target name="examples" depends="demo-war, fb-war"/>
 	
-	<target name="dist" depends="clean, examples, javadoc">
+	<target name="dist" depends="input-version, clean, examples, javadoc">
+		<property name="build.dist.dir" location="${build.dir}/${ant.project.name}-${build.version}"/>
+		<property name="build.dist.zip" location="${build.dir}/${ant.project.name}-${build.version}.zip"/>
+
 		<copy todir="${build.dist.dir}">
 			<fileset dir=".">
 				<include name="src/**" />

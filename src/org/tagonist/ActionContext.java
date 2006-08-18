@@ -43,6 +43,11 @@ public interface ActionContext
 	public Object getError(String errorName);
 
 	/**
+	 * Do we have any errors?
+	 */
+	public boolean hasErrors();
+	
+	/**
 	 * @return the JSP page context. 
 	 */
 	public PageContext getPageContext();

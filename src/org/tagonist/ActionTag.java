@@ -152,6 +152,15 @@ public class ActionTag extends TagSupport implements ActionContext
 
 		return null;
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see org.tagonist.ActionContext#hasErrors()
+	 */
+	public boolean hasErrors()
+	{
+		return this.errors != null;
+	}
 	
 	/* (non-Javadoc)
 	 * @see org.tagonist.ActionContext#getPageContext()

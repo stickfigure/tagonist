@@ -33,6 +33,16 @@ public interface ActionContext
 	public Map getActionParams();
 	
 	/**
+	 * Sets a key/value error flag.
+	 */
+	public void setError(String errorName, Object value);
+	
+	/**
+	 * Gets an error or null if no error with that name has been set.
+	 */
+	public Object getError(String errorName);
+
+	/**
 	 * @return the JSP page context. 
 	 */
 	public PageContext getPageContext();

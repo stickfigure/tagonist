@@ -40,6 +40,11 @@ public class ActionTag extends TagSupport implements ActionContext
 	public void setVar(String value) { this.var = value; }
 	
 	/** */
+	protected String varErrors;
+	public String getVarErrors() { return this.varErrors; }
+	public void setVarErrors(String value) { this.varErrors = value; }
+
+	/** */
 	protected String type;
 	public String getType() { return this.type; }
 	public void setType(String value) { this.type = value; }
@@ -70,6 +75,11 @@ public class ActionTag extends TagSupport implements ActionContext
 	 */
 	protected int pageContextScope = PageContext.REQUEST_SCOPE;
 	
+	/**
+	 * Lazily created Map of errors.
+	 */
+	protected Map errors;
+
 	/* (non-Javadoc)
 	 * @see org.tagonist.ActionContext#setModel(java.lang.Object)
 	 */
@@ -115,6 +125,34 @@ public class ActionTag extends TagSupport implements ActionContext
 		this.actionParams.put(name, value);
 	}
 
+	/**
+	 * Sets an error in a map.
+	 */
+	public void setError(String errorName, Object value)
+	{
+		if (this.errors == null)
+		{
+			this.errors = new HashMap();
+			
+			// Keep the page context scope up to date
+			if (this.varErrors != null)
+				this.pageContext.setAttribute(this.varErrors, this.errors, this.pageContextScope);
+		}
+		
+		this.errors.put(errorName, value);
+	}
+	
+	/**
+	 * Gets an error from the map.
+	 */
+	public Object getError(String errorName)
+	{
+		if (this.errors != null)
+			return this.errors.get(errorName);
+
+		return null;
+	}
+	
 	/* (non-Javadoc)
 	 * @see org.tagonist.ActionContext#getPageContext()
 	 */

@@ -35,6 +35,9 @@
 			<name>var</name>
 		</attribute>
 		<attribute>
+			<name>varErrors</name>
+		</attribute>
+		<attribute>
 			<name>type</name>
 			<required>true</required>
 		</attribute>

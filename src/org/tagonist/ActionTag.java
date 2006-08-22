@@ -86,7 +86,7 @@ public class ActionTag extends TagSupport implements ActionContext
 	public void setModel(Object value)
 	{
 		if (log.isDebugEnabled())
-			log.debug("Setting model to " + value);
+			log.debug("Setting model to " + value.getClass().getName());
 
 		this.model = value;
 		

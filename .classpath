@@ -8,12 +8,6 @@
 	<classpathentry kind="lib" path="lib/javax.servlet.jsp.jar"/>
 	<classpathentry kind="lib" path="lib/commons-beanutils.jar"/>
 	<classpathentry kind="lib" path="lib/commons-logging.jar"/>
-	<classpathentry kind="lib" path="lib/propertizer/asm-2.2.1.jar"/>
-	<classpathentry kind="lib" path="lib/propertizer/asm-attrs-2.2.1.jar"/>
-	<classpathentry kind="lib" path="lib/propertizer/asm-commons-2.2.1.jar"/>
-	<classpathentry kind="lib" path="lib/propertizer/asm-tree-2.2.1.jar"/>
-	<classpathentry kind="lib" path="lib/propertizer/jen-0.30.jar"/>
-	<classpathentry kind="lib" path="lib/propertizer/ant.jar"/>
 	<classpathentry kind="lib" path="lib/propertize/ant.jar"/>
 	<classpathentry kind="lib" path="lib/propertize/asm-2.2.1.jar"/>
 	<classpathentry kind="lib" path="lib/propertize/asm-attrs-2.2.1.jar"/>

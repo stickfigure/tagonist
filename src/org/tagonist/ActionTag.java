@@ -159,7 +159,7 @@ public class ActionTag extends TagSupport implements ActionContext
 	 */
 	public boolean hasErrors()
 	{
-		return this.errors != null;
+		return this.errors != null && !this.errors.isEmpty();
 	}
 	
 	/* (non-Javadoc)
@@ -199,6 +199,11 @@ public class ActionTag extends TagSupport implements ActionContext
 	 */
 	public int doStartTag() throws JspException
 	{
+		this.model = null;
+		
+		if (this.errors != null)
+			this.errors.clear();
+		
 		if (this.actionParams != null)
 			this.actionParams.clear();
 	

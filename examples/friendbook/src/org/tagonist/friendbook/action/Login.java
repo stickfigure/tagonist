@@ -14,6 +14,7 @@ import org.apache.commons.logging.LogFactory;
 public class Login extends FriendbookAction 
 {
 	/** */
+	@SuppressWarnings("unused")
 	private static Log log = LogFactory.getLog(Login.class);
 	
 	/** */

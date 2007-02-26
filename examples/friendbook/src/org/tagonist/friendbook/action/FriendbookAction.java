@@ -72,6 +72,7 @@ abstract public class FriendbookAction extends AbstractAction
 	 * @return the full URI, including the query string.  Works even
 	 *  if an http POST was submitted.
 	 */
+	@SuppressWarnings("unchecked")
 	protected String getFullRequestURI()
 	{
 		if ("POST".equals(this.getCtx().getRequest().getMethod().toUpperCase()))

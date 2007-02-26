@@ -23,11 +23,12 @@ public class FriendBook
 	/**
 	 * Storage for friend objects.  Maps String (login) -> Friend
 	 */
-	protected Map friends = new HashMap();
+	protected Map<String, Friend> friends = new HashMap<String, Friend>();
 
 	/**
 	 * Protected constructor; use FriendBook.getBook()
 	 */
+	@SuppressWarnings("unchecked")
 	protected FriendBook()
 	{
 		// Add some friends for entertainment purposes.

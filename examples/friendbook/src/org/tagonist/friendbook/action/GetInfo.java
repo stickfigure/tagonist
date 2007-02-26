@@ -16,6 +16,7 @@ public class GetInfo extends AuthRequired
 	/**
 	 * Populate a model and hand it back.
 	 */
+	@SuppressWarnings("unchecked")
 	public void authExecute() throws Exception
 	{
 		SaveInfo.Model model = new SaveInfo.Model();
@@ -31,7 +32,7 @@ public class GetInfo extends AuthRequired
 		
 		model.setPhoneList((String[])me.getPhoneList().toArray(new String[0]));
 		model.setEmailList((String[])me.getEmailList().toArray(new String[0]));
-		
+
 		this.getCtx().setModel(model);
 	}
 }

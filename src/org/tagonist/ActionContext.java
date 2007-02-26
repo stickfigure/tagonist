@@ -43,6 +43,16 @@ public interface ActionContext
 	public Object getError(String errorName);
 
 	/**
+	 * Gets a list of all errors
+	 */
+	public Map<String, Object> getErrors();
+
+	/**
+	 * Removes an error
+	 */
+	public void removeError(String errorName);
+
+	/**
 	 * Do we have any errors?
 	 */
 	public boolean hasErrors();

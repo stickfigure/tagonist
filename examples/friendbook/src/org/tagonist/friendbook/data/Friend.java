@@ -18,8 +18,8 @@ public class Friend
 
 	protected Address address = new Address();
 
-	protected List phoneList = new LinkedList();
-	protected List emailList = new LinkedList();
+	protected List<String> phoneList = new LinkedList<String>();
+	protected List<String> emailList = new LinkedList<String>();
 
 	/**
 	 */
@@ -49,12 +49,12 @@ public class Friend
 	/**
 	 */
 	public List getPhoneList() { return this.phoneList; }
-	public void setPhoneList(List list) { this.phoneList = list; }
+	public void setPhoneList(List<String> list) { this.phoneList = list; }
 
 	/**
 	 */
 	public List getEmailList() { return this.emailList; }
-	public void setEmailList(List list) { this.emailList = list; }
+	public void setEmailList(List<String> list) { this.emailList = list; }
 	
 	/**
 	 */

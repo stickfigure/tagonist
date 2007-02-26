@@ -9,6 +9,7 @@ package org.tagonist;
  * 
  * @author Jeff Schnitzer
  */
+@SuppressWarnings("serial")
 public class ForwardException extends RuntimeException
 {
 	/**

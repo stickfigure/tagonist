@@ -23,6 +23,7 @@ import org.apache.commons.logging.LogFactory;
  * 
  * @author Jeff Schnitzer
  */
+@SuppressWarnings("serial")
 public class ActionTag extends TagSupport implements ActionContext
 {
 	/** */
@@ -62,7 +63,7 @@ public class ActionTag extends TagSupport implements ActionContext
 	/**
 	 * Lazily created Map of action parameters.
 	 */
-	protected Map actionParams;
+	protected Map<String, Object> actionParams;
 	
 	/**
 	 * The model that will (hopefully) be assigned by an action. 
@@ -78,7 +79,7 @@ public class ActionTag extends TagSupport implements ActionContext
 	/**
 	 * Lazily created Map of errors.
 	 */
-	protected Map errors;
+	protected Map<String, Object> errors;
 
 	/* (non-Javadoc)
 	 * @see org.tagonist.ActionContext#setModel(java.lang.Object)
@@ -117,7 +118,7 @@ public class ActionTag extends TagSupport implements ActionContext
 	void setActionParam(String name, Object value)
 	{
 		if (this.actionParams == null)
-			this.actionParams = new HashMap();
+			this.actionParams = new HashMap<String, Object>();
 		
 		if (log.isDebugEnabled())
 			log.debug("With param " + name + ":  " + value);
@@ -132,7 +133,7 @@ public class ActionTag extends TagSupport implements ActionContext
 	{
 		if (this.errors == null)
 		{
-			this.errors = new HashMap();
+			this.errors = new HashMap<String, Object>();
 			
 			// Keep the page context scope up to date
 			if (this.varErrors != null)
@@ -161,7 +162,25 @@ public class ActionTag extends TagSupport implements ActionContext
 	{
 		return this.errors != null && !this.errors.isEmpty();
 	}
-	
+
+	/*
+	 * (non-Javadoc)
+	 * @see org.tagonist.ActionContext#getErrors()
+	 */
+	public Map<String, Object> getErrors()
+	{
+		return this.errors;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see org.tagonist.ActionContext#removeError(java.lang.String)
+	 */
+	public void removeError(String errorName)
+	{
+		this.errors.remove(errorName);
+	}
+
 	/* (non-Javadoc)
 	 * @see org.tagonist.ActionContext#getPageContext()
 	 */

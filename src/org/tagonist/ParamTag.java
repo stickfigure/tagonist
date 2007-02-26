@@ -13,6 +13,7 @@ import javax.servlet.jsp.tagext.TagSupport;
  * 
  * @author Jeff Schnitzer
  */
+@SuppressWarnings("serial")
 public class ParamTag extends TagSupport
 {
 	/** */

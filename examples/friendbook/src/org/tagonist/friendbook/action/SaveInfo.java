@@ -19,7 +19,7 @@ import org.tagonist.friendbook.data.Friend;
 public class SaveInfo extends AuthRequired
 {
 	/** */
-	public static class Model extends ErrorMapModel
+	public static class Model
 	{
 		/** */
 		String firstName;
@@ -80,6 +80,7 @@ public class SaveInfo extends AuthRequired
 	
 	/**
 	 */
+	@SuppressWarnings("unchecked")
 	public void authExecute() throws Exception
 	{
 		Model model = (Model)this.getCtx().getModel();

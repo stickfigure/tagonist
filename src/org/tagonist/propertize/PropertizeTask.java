@@ -113,7 +113,7 @@ public class PropertizeTask extends Task
 	protected void process(File classFile) throws IOException, ClassNotFoundException
 	{
 		if (this.verbose)
-			this.log("Checking " + classFile.toURL());
+			this.log("Checking " + classFile.toURI());
 		
         InputStream in = new BufferedInputStream(new FileInputStream(classFile));
 		SoftClass softie;
@@ -129,7 +129,7 @@ public class PropertizeTask extends Task
 		
 		if (this.process(softie))
 		{
-			this.log("Rewriting " + classFile.toURL());
+			this.log("Rewriting " + classFile.toURI());
 			
 			FileOutputStream fos = new FileOutputStream(classFile);
 			try

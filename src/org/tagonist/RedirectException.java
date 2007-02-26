@@ -9,10 +9,11 @@ package org.tagonist;
  * 
  * @author Jeff Schnitzer
  */
+@SuppressWarnings("serial")
 public class RedirectException extends RuntimeException
 {
 	/**
-	 * @param location must be suitable for passing to HttpServletResponse.sendRedirect(). 
+	 * @param path must be suitable for passing to HttpServletResponse.sendRedirect(). 
 	 */
 	public RedirectException(String path)
 	{

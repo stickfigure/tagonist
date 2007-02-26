@@ -34,21 +34,21 @@ public class GetBookmarks extends AbstractAction
 	{
 		if (userId == 1)
 		{
-			List marks = new ArrayList();
+			List<Bookmark> marks = new ArrayList<Bookmark>();
 			marks.add(new Bookmark("Memorize This", "http://www.wikipedia.org/"));
 			marks.add(new Bookmark("Dance", "http://www.lindylist.com/"));
 			return marks;
 		}
 		else if (userId == 2)
 		{
-			List marks = new ArrayList();
+			List<Bookmark> marks = new ArrayList<Bookmark>();
 			marks.add(new Bookmark("Furniture Porn", "http://www.furnitureporn.com/"));
 			marks.add(new Bookmark("Who are you looking at?", "http://127.0.0.1/"));
 			return marks;
 		}
 		else
 		{
-			List marks = new ArrayList();
+			List<Bookmark> marks = new ArrayList<Bookmark>();
 			marks.add(new Bookmark("Tagonist", "http://tagonist.tigris.org/"));
 			marks.add(new Bookmark("Pet Project", "http://www.similarity.net/"));
 			marks.add(new Bookmark("Internet Radio", "http://www.badgerbadgerbadger.com/"));

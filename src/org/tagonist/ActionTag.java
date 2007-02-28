@@ -167,9 +167,13 @@ public class ActionTag extends TagSupport implements ActionContext
 	 * (non-Javadoc)
 	 * @see org.tagonist.ActionContext#getErrors()
 	 */
+	@SuppressWarnings("unchecked")
 	public Map<String, Object> getErrors()
 	{
-		return this.errors;
+		if (this.errors == null)
+			return Collections.EMPTY_MAP;
+		else
+			return this.errors;
 	}
 
 	/*

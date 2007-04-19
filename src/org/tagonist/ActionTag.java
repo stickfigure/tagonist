@@ -43,7 +43,11 @@ public class ActionTag extends TagSupport implements ActionContext
 	/** */
 	protected String varErrors;
 	public String getVarErrors() { return this.varErrors; }
-	public void setVarErrors(String value) { this.varErrors = value; }
+	public void setVarErrors(String value)
+	{
+		this.varErrors = value;
+		this.errors = null;	// need to reset this 'cause the tag lifecycle is lame
+	}
 
 	/** */
 	protected String type;

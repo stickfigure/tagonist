@@ -137,6 +137,10 @@ public class ErrorTrappingBeanUtilsBean extends BeanUtilsBean
 			{
 				errorSink.setError(name, ex.getMessage());
 			}
+			catch (IllegalArgumentException ex)
+			{
+				errorSink.setError(name, ex.getMessage());
+			}
 		}
 	}
 }

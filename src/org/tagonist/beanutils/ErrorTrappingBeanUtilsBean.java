@@ -141,6 +141,10 @@ public class ErrorTrappingBeanUtilsBean extends BeanUtilsBean
 			{
 				errorSink.setError(name, ex.getMessage());
 			}
+			catch (StringIndexOutOfBoundsException ex)
+			{
+				errorSink.setError(name, ex.getMessage());
+			}
 		}
 	}
 }

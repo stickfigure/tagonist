@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-
 <project name="demo" default="demo-war" basedir=".">
 
 	<dirname property="demo.basedir" file="${ant.file.demo}"/>
@@ -12,7 +11,6 @@
 	<property name="demo.build.classes.dir" location="${build.dir}/classes-demo" />
 	<property name="demo.build.war.file" location="${build.dir}/demo.war" />
 	
-
 	<path id="demo.classpath">
 		<path refid="master.classpath" />
 		<pathelement location="${build.jar.file}"/>
@@ -22,8 +20,7 @@
 		</fileset>
 	</path>
 
-	<property name="debug" value="on" />
-
+	<property name="demo.debug" value="on" />
 
 	<!-- Targets -->
  	<target name="demo-classes" depends="jar">
@@ -31,7 +28,7 @@
 		
 		<javac srcdir="${demo.javasrc.dir}"
 				destdir="${demo.build.classes.dir}"
-				debug="${debug}">
+				debug="${demo.debug}">
 			<classpath refid="demo.classpath" />
 			
 		</javac>

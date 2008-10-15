@@ -10,27 +10,28 @@ import org.tagonist.AbstractAction;
 
 /**
  * Gets a hypothetical user object and makes it available as the model.
- * 
+ *
  * @author Jeff Schnitzer
  */
-public class GetBookmarks extends AbstractAction 
+public class GetBookmarks extends AbstractAction
 {
 	/** */
 	long id;
 	public void setId(long value) { this.id = value; }
-	
+
 	/** */
+	@Override
 	public void execute() throws Exception
 	{
-		List marks = this.fetchBookmarks(this.id);
-		
+		List<Bookmark> marks = this.fetchBookmarks(this.id);
+
 		this.getCtx().setModel(marks);
 	}
-	
+
 	/**
 	 * Could fetch the data from a database, etc
 	 */
-	List fetchBookmarks(long userId)
+	List<Bookmark> fetchBookmarks(long userId)
 	{
 		if (userId == 1)
 		{

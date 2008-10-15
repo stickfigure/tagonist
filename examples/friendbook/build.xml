@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-
 <project name="friendbook" default="fb-war" basedir=".">
 
 	<dirname property="fb.basedir" file="${ant.file.friendbook}"/>
@@ -12,7 +11,6 @@
 	<property name="fb.build.classes.dir" location="${build.dir}/classes-friendbook" />
 	<property name="fb.build.war.file" location="${build.dir}/friendbook.war" />
 	
-
 	<path id="fb.classpath">
 		<path refid="master.classpath" />
 		<pathelement location="${build.jar.file}"/>
@@ -22,8 +20,7 @@
 		</fileset>
 	</path>
 
-	<property name="debug" value="on" />
-
+	<property name="fb.debug" value="on" />
 
 	<!-- Targets -->
  	<target name="fb-classes" depends="jar">
@@ -31,7 +28,7 @@
 		
 		<javac srcdir="${fb.javasrc.dir}"
 				destdir="${fb.build.classes.dir}"
-				debug="${debug}">
+				debug="${fb.debug}">
 			<classpath refid="fb.classpath" />
 			
 		</javac>
@@ -40,8 +37,8 @@
 	<target name="fb-propertize" depends="fb-classes">
 		<taskdef name="propertize" classname="org.tagonist.propertize.PropertizeTask">
 			<classpath>
-				<path refid="fb.classpath" />
-				<pathelement location="${fb.build.classes.dir}"/>
+				<path refid="master.classpath" />
+				<pathelement location="${build.jar.file}"/>
 			</classpath>
 		</taskdef>
 		

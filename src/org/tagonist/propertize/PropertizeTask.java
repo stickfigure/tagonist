@@ -1,5 +1,5 @@
 /*
- * 
+ *
  */
 package org.tagonist.propertize;
 
@@ -39,9 +39,9 @@ import org.objectweb.asm.tree.FieldNode;
  * with the Property annotation.  For any such fields, public getter
  * and setter methods will be added to the class.  If any getter or setter
  * already exists, it is left alone.
- * 
+ *
  * The class files are rewritten in place.
- * 
+ *
  * @author Jeff Schnitzer
  */
 public class PropertizeTask extends Task
@@ -51,10 +51,10 @@ public class PropertizeTask extends Task
 
     /** */
 	List<FileSet> filesets = new ArrayList<FileSet>();
-	
+
 	/** */
 	boolean verbose;
-	
+
 	/**
 	 * Want some extra logging output?
 	 */
@@ -62,15 +62,15 @@ public class PropertizeTask extends Task
 	{
 		this.verbose = value;
 	}
-	
-	/** 
-	 * Called by ant for each nested fileset 
+
+	/**
+	 * Called by ant for each nested fileset
 	 */
 	public void addFileset(FileSet value)
 	{
 		this.filesets.add(value);
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see org.apache.tools.ant.Task#execute()
 	 */
@@ -79,17 +79,17 @@ public class PropertizeTask extends Task
 	{
 		try
 		{
-			Project p = getProject();
+			Project p = this.getProject();
 
 			for (FileSet fileset: this.filesets)
 			{
 				File dir = fileset.getDir(p);
 				DirectoryScanner ds = fileset.getDirectoryScanner(p);
-				
+
 				for (String classFile: ds.getIncludedFiles())
 				{
 					File absolute = new File(dir, classFile);
-					
+
 					if (absolute.isFile() && this.isClassFile(absolute))
 						this.process(absolute);
 				}
@@ -104,7 +104,7 @@ public class PropertizeTask extends Task
 			throw new BuildException(ex, this.getLocation());
 		}
 	}
-	
+
 	/**
 	 * Performs propertizing bytecode manipulation on the file,
 	 * rewriting it in place.  Assumes the file exists and is
@@ -114,7 +114,7 @@ public class PropertizeTask extends Task
 	{
 		if (this.verbose)
 			this.log("Checking " + classFile.toURI());
-		
+
         InputStream in = new BufferedInputStream(new FileInputStream(classFile));
 		SoftClass softie;
 		try
@@ -126,11 +126,11 @@ public class PropertizeTask extends Task
 		{
 			in.close();
 		}
-		
+
 		if (this.process(softie))
 		{
 			this.log("Rewriting " + classFile.toURI());
-			
+
 			FileOutputStream fos = new FileOutputStream(classFile);
 			try
 			{
@@ -142,11 +142,11 @@ public class PropertizeTask extends Task
 			}
 		}
 	}
-	
+
 	/**
 	 * Manipulates the soft class so that all appropriate methods
 	 * are annotated.
-	 * 
+	 *
 	 * @return true if the class changed, false if it did not
 	 * require any manipulation.
 	 */
@@ -164,13 +164,13 @@ public class PropertizeTask extends Task
 				{
 					AnnotationNode aNode = (AnnotationNode)ann;
 					AnnotationWrapper wrapper = new AnnotationWrapper(aNode);
-					
+
 					if (wrapper.isClass(Property.class))
 					{
 						Boolean get = (Boolean)wrapper.getValue("get");
 						if (get == null)
 							get = true;	// The default
-						
+
 						if (get)
 						{
 							BeanPropertyGetter getter = new BeanPropertyGetter(softClazz, Opcodes.ACC_PUBLIC, fNode.name, fNode.name, Type.getType(fNode.desc));
@@ -180,11 +180,11 @@ public class PropertizeTask extends Task
 								changed = true;
 							}
 						}
-						
+
 						Boolean set = (Boolean)wrapper.getValue("set");
 						if (set == null)
 							set = true;	// The default
-						
+
 						if (set)
 						{
 							BeanPropertySetter setter = new BeanPropertySetter(softClazz, Opcodes.ACC_PUBLIC, fNode.name, fNode.name, Type.getType(fNode.desc));
@@ -198,10 +198,10 @@ public class PropertizeTask extends Task
 				}
 			}
 		}
-		
+
 		return changed;
 	}
-	
+
 	/**
 	 * Is it a java classfile?
 	 */
@@ -209,7 +209,7 @@ public class PropertizeTask extends Task
 	{
 		return this.checkMagic(file, CLASS_MAGIC);
 	}
-	
+
 	/**
 	 * Checks to see if the file starts with the magic number.
 	 */
@@ -226,43 +226,43 @@ public class PropertizeTask extends Task
 			in.close();
 		}
 	}
-    
+
     /**
      * Puts a sane interface on an AnntationNode.
      */
     public static class AnnotationWrapper
     {
 		String className;
-		Map<String, Object> values = new HashMap<String, Object>(); 
-    	
+		Map<String, Object> values = new HashMap<String, Object>();
+
+		@SuppressWarnings("unchecked")
 		public AnnotationWrapper(AnnotationNode node)
 		{
 			// Descriptors look like: Lcom.whatever.TheAnnotation;
     		this.className = Type.getType(node.desc).getClassName();
-    		
+
     		// Values are a List of pairs... String, then actual value of some random type
     		if (node.values != null)
     		{
-    			Iterator it = node.values.iterator();
+    			Iterator<String> it = node.values.iterator();
     			while (it.hasNext())
     			{
-    				String name = (String)it.next();
+    				String name = it.next();
     				Object value = it.next();
-    				
+
     				this.values.put(name, value);
     			}
     		}
     	}
-		
-		public boolean isClass(Class clazz)
+
+		public boolean isClass(Class<?> clazz)
 		{
 			return clazz.getName().equals(this.className);
 		}
-		
+
 		public Object getValue(String name)
 		{
 			return this.values.get(name);
 		}
     }
-
 }

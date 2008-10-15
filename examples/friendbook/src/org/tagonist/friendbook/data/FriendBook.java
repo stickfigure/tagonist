@@ -28,7 +28,6 @@ public class FriendBook
 	/**
 	 * Protected constructor; use FriendBook.getBook()
 	 */
-	@SuppressWarnings("unchecked")
 	protected FriendBook()
 	{
 		// Add some friends for entertainment purposes.
@@ -82,21 +81,21 @@ public class FriendBook
 		f.getEmailList().add("marvin@hotmail.com");
 
 		this.addFriend(f);
-		
+
 		//
 		f = new Friend();
 
 		f.setLogin("john");
 		f.setPassword("pass");
 		f.setFirstName("John");
-		f.setLastName("Umläut");
+		f.setLastName("Umlï¿½ut");
 
 		f.getAddress().setAddressLine1("nowhere");
 		f.getAddress().setAddressLine2("here");
 		f.getAddress().setState("busy");
 
 		f.getPhoneList().add("44-");
-		f.getEmailList().add("ä@hhehe.yu");
+		f.getEmailList().add("ï¿½@hhehe.yu");
 
 		this.addFriend(f);	}
 
@@ -111,7 +110,7 @@ public class FriendBook
 	/**
 	 * @return a collection of all the Friend objects
 	 */
-	public Collection findAll()
+	public Collection<Friend> findAll()
 	{
 		return this.friends.values();
 	}
@@ -121,7 +120,7 @@ public class FriendBook
 	 */
 	public Friend findByLogin(String login)
 	{
-		return (Friend)this.friends.get(login);
+		return this.friends.get(login);
 	}
 
 	/**

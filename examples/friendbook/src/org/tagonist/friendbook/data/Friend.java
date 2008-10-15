@@ -3,7 +3,8 @@
 
 package org.tagonist.friendbook.data;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Data for a friend.
@@ -48,16 +49,17 @@ public class Friend
 
 	/**
 	 */
-	public List getPhoneList() { return this.phoneList; }
+	public List<String> getPhoneList() { return this.phoneList; }
 	public void setPhoneList(List<String> list) { this.phoneList = list; }
 
 	/**
 	 */
-	public List getEmailList() { return this.emailList; }
+	public List<String> getEmailList() { return this.emailList; }
 	public void setEmailList(List<String> list) { this.emailList = list; }
-	
+
 	/**
 	 */
+	@Override
 	public String toString()
 	{
 		return "login=" + this.login + ", password=" + this.password

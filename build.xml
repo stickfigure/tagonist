@@ -19,7 +19,8 @@
 	
 	<path id="master.classpath">
 		<fileset dir="${lib.dir}">
-			<include name="**/*.jar" />
+			<include name="*.jar" />
+			<include name="propertize/*.jar" />
 		</fileset>
 	</path>
 

@@ -16,22 +16,22 @@ public class GetInfo extends AuthRequired
 	/**
 	 * Populate a model and hand it back.
 	 */
-	@SuppressWarnings("unchecked")
+	@Override
 	public void authExecute() throws Exception
 	{
 		SaveInfo.Model model = new SaveInfo.Model();
-		
+
 		Friend me = this.getMe();
-		
+
 		model.setFirstName(me.getFirstName());
 		model.setLastName(me.getLastName());
 		model.setAddrLine1(me.getAddress().getAddressLine1());
 		model.setAddrLine2(me.getAddress().getAddressLine2());
 		model.setAddrCity(me.getAddress().getCity());
 		model.setAddrState(me.getAddress().getState());
-		
-		model.setPhoneList((String[])me.getPhoneList().toArray(new String[0]));
-		model.setEmailList((String[])me.getEmailList().toArray(new String[0]));
+
+		model.setPhoneList(me.getPhoneList().toArray(new String[0]));
+		model.setEmailList(me.getEmailList().toArray(new String[0]));
 
 		this.getCtx().setModel(model);
 	}

@@ -7,6 +7,7 @@ package org.tagonist.friendbook.action;
 
 import java.util.Collection;
 
+import org.tagonist.friendbook.data.Friend;
 import org.tagonist.friendbook.data.FriendBook;
 
 
@@ -17,10 +18,11 @@ public class GetFriends extends AuthRequired
 {
 	/**
 	 */
+	@Override
 	public void authExecute() throws Exception
 	{
-		Collection friends = FriendBook.getBook().findAll();
-		
+		Collection<Friend> friends = FriendBook.getBook().findAll();
+
 		this.getCtx().setModel(friends);
 	}
 }

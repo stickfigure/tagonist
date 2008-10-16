@@ -1718,7 +1718,7 @@ protected final boolean canModify() {
   protected ClassVisitor getDelegate() {
     if (this.generationDelegate == null) {
       if (!this.isFrozen()) {
-        this.generationDelegate = new ClassWriter(0);
+        this.generationDelegate = new ClassWriter(ClassWriter.COMPUTE_MAXS);
       } else {
         throw (new InconsistentSoftClassException(this));
       }
@@ -1763,7 +1763,7 @@ protected final boolean canModify() {
    * @see #generateBytecode()
    */
   public void thaw() {
-    this.thaw(new ClassWriter(0));
+    this.thaw(new ClassWriter(ClassWriter.COMPUTE_MAXS));
   }
 
   /**

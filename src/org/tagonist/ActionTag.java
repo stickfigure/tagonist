@@ -15,8 +15,8 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.TagSupport;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * JSP custom tag that instantiates Action classes.
@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 public class ActionTag extends TagSupport implements ActionContext
 {
 	/** */
-	private final static Logger log = LoggerFactory.getLogger(ActionTag.class);
+	private static Log log = LogFactory.getLog(ActionTag.class);
 
 	/** */
 	public final String SCOPE_PAGE = "page";

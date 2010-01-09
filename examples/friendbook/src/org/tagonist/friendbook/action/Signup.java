@@ -7,17 +7,11 @@ package org.tagonist.friendbook.action;
 
 import org.tagonist.friendbook.data.Friend;
 import org.tagonist.friendbook.data.FriendBook;
-import org.tagonist.propertize.Property;
 
 /**
  * The action for the submission of the signup form.  Since the error
  * case simply sends back to the signup view, we provide input values to
  * the form as well.
- * 
- * This action also demonstrates the use of the Propertizer.
- * Propertize is an ant task that uses bytecode manipulation to
- * add getter and setter methods for fields annotated as properties.
- * Tired of repetitive typing?
  */
 public class Signup extends FriendbookAction
 {
@@ -25,9 +19,17 @@ public class Signup extends FriendbookAction
 	public static class Model extends ErrorMapModel
 	{
 		/** */
-		@Property String name = "";
-		@Property String password = "";
-		@Property String passwordAgain = "";
+		String name = "";
+		public String getName() { return this.name; }
+		public void setName(String value) { this.name = value; }
+		
+		String password = "";
+		public String getPassword() { return this.password; }
+		public void setPassword(String value) { this.password = value; }
+		
+		String passwordAgain = "";
+		public String getPasswordAgain() { return this.passwordAgain; }
+		public void setPasswordAgain(String value) { this.passwordAgain = value; }
 	}
 	
 	/** */

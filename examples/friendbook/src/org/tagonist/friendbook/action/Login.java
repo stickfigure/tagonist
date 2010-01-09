@@ -3,8 +3,6 @@
 
 package org.tagonist.friendbook.action;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  * Performs a login.
@@ -13,10 +11,6 @@ import org.apache.commons.logging.LogFactory;
  */
 public class Login extends FriendbookAction 
 {
-	/** */
-	@SuppressWarnings("unused")
-	private static Log log = LogFactory.getLog(Login.class);
-	
 	/** */
 	public static class Model extends ErrorMapModel
 	{

@@ -1,7 +1,7 @@
 /*
  */
 
-package org.tagonist;
+package com.voodoodyne.tagonist;
 
 /**
  * Actions must implement this interface in order to be processed

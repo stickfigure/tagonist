@@ -1,6 +1,6 @@
 /*
  */
-package org.tagonist.beanutils;
+package com.voodoodyne.tagonist.beanutils;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -34,7 +34,7 @@ import org.apache.commons.beanutils.converters.SqlTimeConverter;
 import org.apache.commons.beanutils.converters.SqlTimestampConverter;
 import org.apache.commons.beanutils.converters.StringConverter;
 import org.apache.commons.beanutils.converters.URLConverter;
-import org.tagonist.ActionContext;
+import com.voodoodyne.tagonist.ActionContext;
 
 /**
  * A much smarter BeanUtilsBean that traps errors instead of ignoring

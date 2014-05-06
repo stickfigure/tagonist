@@ -1,6 +1,6 @@
 /*
  */
-package org.tagonist;
+package com.voodoodyne.tagonist;
 
 /**
  * Throwing a SkipPageException from within the body of Action.execute() will

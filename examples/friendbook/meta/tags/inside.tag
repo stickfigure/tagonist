@@ -4,7 +4,7 @@
 <%@ attribute name="title" required="true" %>
 
 <%-- Ensures that only logged-in users can access these pages, also provides a way of getting a little info --%>
-<t:action var="auth" type="org.tagonist.friendbook.action.AuthRequired"/>
+<t:action var="auth" type="com.voodoodyne.tagonist.friendbook.action.AuthRequired"/>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"

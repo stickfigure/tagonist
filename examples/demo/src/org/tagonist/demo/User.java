@@ -1,7 +1,7 @@
 /*
  */
 
-package org.tagonist.demo;
+package com.voodoodyne.tagonist.demo;
 
 
 /**

@@ -3,11 +3,11 @@
  * $Source: /cvsroot/mav/maverick/examples/friendbook-jsp/javasrc/org/infohazard/friendbook/ctl/SignupSubmit.java,v $
  */
 
-package org.tagonist.friendbook.action;
+package com.voodoodyne.tagonist.friendbook.action;
 
-import org.tagonist.ForwardException;
-import org.tagonist.friendbook.data.Friend;
-import org.tagonist.friendbook.data.FriendBook;
+import com.voodoodyne.tagonist.ForwardException;
+import com.voodoodyne.tagonist.friendbook.data.Friend;
+import com.voodoodyne.tagonist.friendbook.data.FriendBook;
 
 /**
  * Requires the user to be logged in.  Can be placed on a page by itself

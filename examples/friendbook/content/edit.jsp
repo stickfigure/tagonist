@@ -6,7 +6,7 @@
 <%@ taglib prefix="fb" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="t" uri="http://www.tagonist.org/tagonist" %>
 
-<t:action var="model" type="org.tagonist.friendbook.action.GetInfo"/>
+<t:action var="model" type="com.voodoodyne.tagonist.friendbook.action.GetInfo"/>
 
 <fb:inside title="Edit Your Info">
 	<p>

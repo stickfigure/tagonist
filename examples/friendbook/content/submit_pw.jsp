@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="t" uri="http://www.tagonist.org/tagonist" %>
 
-<t:action var="model" type="org.tagonist.friendbook.action.ChangePassword"/>
+<t:action var="model" type="com.voodoodyne.tagonist.friendbook.action.ChangePassword"/>
 
 <c:choose>
 	<c:when test="${empty model.errors}">

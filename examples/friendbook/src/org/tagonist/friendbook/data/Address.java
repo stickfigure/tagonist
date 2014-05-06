@@ -1,7 +1,7 @@
 /*
  */
 
-package org.tagonist.friendbook.data;
+package com.voodoodyne.tagonist.friendbook.data;
 
 /**
  * Address entry.

@@ -1,8 +1,8 @@
 /*
  */
-package org.tagonist;
+package com.voodoodyne.tagonist;
 
-import org.tagonist.beanutils.ErrorTrappingBeanUtilsBean;
+import com.voodoodyne.tagonist.beanutils.ErrorTrappingBeanUtilsBean;
 
 /**
  * This action replaces AbstractAction.  Instead of ignoring or throwing
@@ -42,7 +42,7 @@ public abstract class ErrorTrappingAction implements Action
 	/**
 	 * Override execute() instead.
 	 *
-	 * @see org.tagonist.Action#execute(org.tagonist.ActionContext)
+	 * @see com.voodoodyne.tagonist.Action#execute(com.voodoodyne.tagonist.ActionContext)
 	 */
 	@SuppressWarnings("unchecked")
 	public final void execute(ActionContext ctx) throws Exception

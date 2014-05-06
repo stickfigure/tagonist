@@ -1,9 +1,9 @@
 /*
  */
 
-package org.tagonist.demo;
+package com.voodoodyne.tagonist.demo;
 
-import org.tagonist.AbstractAction;
+import com.voodoodyne.tagonist.AbstractAction;
 
 /**
  * Gets a hypothetical user object and makes it available as the model.

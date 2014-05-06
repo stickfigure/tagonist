@@ -1,7 +1,7 @@
 <%@ taglib prefix="t" uri="http://www.tagonist.org/tagonist" %>
 <%@ taglib prefix="fb" tagdir="/WEB-INF/tags" %>
 
-<t:action type="org.tagonist.friendbook.action.Logout"/>
+<t:action type="com.voodoodyne.tagonist.friendbook.action.Logout"/>
 
 <fb:outside title="Logout">
 	<p>

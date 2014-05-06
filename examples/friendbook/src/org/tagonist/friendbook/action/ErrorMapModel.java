@@ -1,7 +1,7 @@
 /*
  */
 
-package org.tagonist.friendbook.action;
+package com.voodoodyne.tagonist.friendbook.action;
 
 import java.util.Collections;
 import java.util.Map;

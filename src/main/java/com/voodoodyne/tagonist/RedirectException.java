@@ -1,6 +1,6 @@
 /*
  */
-package org.tagonist;
+package com.voodoodyne.tagonist;
 
 /**
  * Throwing a RedirectException from within the body of Action.execute() will

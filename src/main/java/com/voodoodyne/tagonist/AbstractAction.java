@@ -1,6 +1,6 @@
 /*
  */
-package org.tagonist;
+package com.voodoodyne.tagonist;
 
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -39,7 +39,7 @@ public abstract class AbstractAction implements Action
 	/**
 	 * Override execute() instead.
 	 * 
-	 * @see org.tagonist.Action#execute(org.tagonist.ActionContext)
+	 * @see com.voodoodyne.tagonist.Action#execute(com.voodoodyne.tagonist.ActionContext)
 	 */
 	public final void execute(ActionContext ctx) throws Exception
 	{

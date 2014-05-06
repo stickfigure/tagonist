@@ -1,11 +1,9 @@
 /*
  */
-package org.tagonist;
+package com.voodoodyne.tagonist;
 
-import java.io.IOException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,9 +12,10 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.TagSupport;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * JSP custom tag that instantiates Action classes.
@@ -86,7 +85,7 @@ public class ActionTag extends TagSupport implements ActionContext
 	protected Map<String, Object> errors;
 
 	/* (non-Javadoc)
-	 * @see org.tagonist.ActionContext#setModel(java.lang.Object)
+	 * @see com.voodoodyne.tagonist.ActionContext#setModel(java.lang.Object)
 	 */
 	public void setModel(Object value)
 	{
@@ -106,12 +105,12 @@ public class ActionTag extends TagSupport implements ActionContext
 	}
 
 	/* (non-Javadoc)
-	 * @see org.tagonist.ActionContext#getModel()
+	 * @see com.voodoodyne.tagonist.ActionContext#getModel()
 	 */
 	public Object getModel() { return this.model; }
 
 	/* (non-Javadoc)
-	 * @see org.tagonist.ActionContext#getActionParams()
+	 * @see com.voodoodyne.tagonist.ActionContext#getActionParams()
 	 */
 	public Map<String, Object> getActionParams()
 	{
@@ -165,7 +164,7 @@ public class ActionTag extends TagSupport implements ActionContext
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.tagonist.ActionContext#hasErrors()
+	 * @see com.voodoodyne.tagonist.ActionContext#hasErrors()
 	 */
 	public boolean hasErrors()
 	{
@@ -174,7 +173,7 @@ public class ActionTag extends TagSupport implements ActionContext
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.tagonist.ActionContext#getErrors()
+	 * @see com.voodoodyne.tagonist.ActionContext#getErrors()
 	 */
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> getErrors()
@@ -187,7 +186,7 @@ public class ActionTag extends TagSupport implements ActionContext
 
 	/*
 	 * (non-Javadoc)
-	 * @see org.tagonist.ActionContext#removeError(java.lang.String)
+	 * @see com.voodoodyne.tagonist.ActionContext#removeError(java.lang.String)
 	 */
 	public void removeError(String errorName)
 	{
@@ -195,7 +194,7 @@ public class ActionTag extends TagSupport implements ActionContext
 	}
 
 	/* (non-Javadoc)
-	 * @see org.tagonist.ActionContext#getPageContext()
+	 * @see com.voodoodyne.tagonist.ActionContext#getPageContext()
 	 */
 	public PageContext getPageContext()
 	{
@@ -203,7 +202,7 @@ public class ActionTag extends TagSupport implements ActionContext
 	}
 
 	/* (non-Javadoc)
-	 * @see org.tagonist.ActionContext#getRequest()
+	 * @see com.voodoodyne.tagonist.ActionContext#getRequest()
 	 */
 	public HttpServletRequest getRequest()
 	{
@@ -211,7 +210,7 @@ public class ActionTag extends TagSupport implements ActionContext
 	}
 
 	/* (non-Javadoc)
-	 * @see org.tagonist.ActionContext#getResponse()
+	 * @see com.voodoodyne.tagonist.ActionContext#getResponse()
 	 */
 	public HttpServletResponse getResponse()
 	{
@@ -219,7 +218,7 @@ public class ActionTag extends TagSupport implements ActionContext
 	}
 
 	/* (non-Javadoc)
-	 * @see org.tagonist.ActionContext#getSession()
+	 * @see com.voodoodyne.tagonist.ActionContext#getSession()
 	 */
 	public HttpSession getSession()
 	{

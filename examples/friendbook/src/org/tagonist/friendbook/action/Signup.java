@@ -3,10 +3,10 @@
  * $Source: /cvsroot/mav/maverick/examples/friendbook-jsp/javasrc/org/infohazard/friendbook/ctl/SignupSubmit.java,v $
  */
 
-package org.tagonist.friendbook.action;
+package com.voodoodyne.tagonist.friendbook.action;
 
-import org.tagonist.friendbook.data.Friend;
-import org.tagonist.friendbook.data.FriendBook;
+import com.voodoodyne.tagonist.friendbook.data.Friend;
+import com.voodoodyne.tagonist.friendbook.data.FriendBook;
 
 /**
  * The action for the submission of the signup form.  Since the error

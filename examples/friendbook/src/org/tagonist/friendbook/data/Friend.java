@@ -1,7 +1,7 @@
 /*
  */
 
-package org.tagonist.friendbook.data;
+package com.voodoodyne.tagonist.friendbook.data;
 
 import java.util.LinkedList;
 import java.util.List;

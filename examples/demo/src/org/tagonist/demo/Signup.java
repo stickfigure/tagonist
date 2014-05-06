@@ -1,9 +1,9 @@
 /*
  */
 
-package org.tagonist.demo;
+package com.voodoodyne.tagonist.demo;
 
-import org.tagonist.AbstractAction;
+import com.voodoodyne.tagonist.AbstractAction;
 
 /**
  * Form processing for a simple signup operation.

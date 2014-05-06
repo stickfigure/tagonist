@@ -3,7 +3,7 @@
  * $Source: /cvsroot/mav/maverick/examples/friendbook-jsp/javasrc/org/infohazard/friendbook/ctl/SignupSubmit.java,v $
  */
 
-package org.tagonist.friendbook.action;
+package com.voodoodyne.tagonist.friendbook.action;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import org.tagonist.friendbook.data.Friend;
+import com.voodoodyne.tagonist.friendbook.data.Friend;
 
 /**
  * This action saves all the information submitted.

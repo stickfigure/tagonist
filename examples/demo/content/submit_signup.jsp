@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="t" uri="http://www.tagonist.org/tagonist" %>
 
-<t:action var="model" type="org.tagonist.demo.Signup"/>
+<t:action var="model" type="com.voodoodyne.tagonist.demo.Signup"/>
 
 <c:choose>
 	<c:when test="${empty model.error}">

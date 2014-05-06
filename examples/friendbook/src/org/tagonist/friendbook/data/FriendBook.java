@@ -3,7 +3,7 @@
  * $Source: /cvsroot/mav/maverick/examples/friendbook-jsp/javasrc/org/infohazard/friendbook/data/FriendBook.java,v $
  */
 
-package org.tagonist.friendbook.data;
+package com.voodoodyne.tagonist.friendbook.data;
 
 import java.util.Collection;
 import java.util.HashMap;

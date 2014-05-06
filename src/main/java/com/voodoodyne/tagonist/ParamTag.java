@@ -1,6 +1,6 @@
 /*
  */
-package org.tagonist;
+package com.voodoodyne.tagonist;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;

@@ -35,7 +35,7 @@
 	</target>
 	
 	<target name="fb-propertize" depends="fb-classes">
-		<taskdef name="propertize" classname="org.tagonist.propertize.PropertizeTask">
+		<taskdef name="propertize" classname="com.voodoodyne.tagonist.propertize.PropertizeTask">
 			<classpath>
 				<path refid="master.classpath" />
 				<pathelement location="${build.jar.file}"/>

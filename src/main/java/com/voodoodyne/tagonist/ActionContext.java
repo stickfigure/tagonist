@@ -1,13 +1,12 @@
 /*
  */
-package org.tagonist;
-
-import java.util.Map;
+package com.voodoodyne.tagonist;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.PageContext;
+import java.util.Map;
 
 /**
  * Interface that provides container APIs to action classes.

@@ -3,9 +3,9 @@
  * $Source: /cvsroot/mav/maverick/examples/friendbook-jsp/javasrc/org/infohazard/friendbook/ctl/SignupSubmit.java,v $
  */
 
-package org.tagonist.friendbook.action;
+package com.voodoodyne.tagonist.friendbook.action;
 
-import org.tagonist.friendbook.data.Friend;
+import com.voodoodyne.tagonist.friendbook.data.Friend;
 
 /**
  * This action gets all the data from the friendbook and creates

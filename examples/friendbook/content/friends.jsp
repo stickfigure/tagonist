@@ -4,7 +4,7 @@
 <%@ taglib prefix="fb" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="t" uri="http://www.tagonist.org/tagonist" %>
 
-<t:action var="friends" type="org.tagonist.friendbook.action.GetFriends"/>
+<t:action var="friends" type="com.voodoodyne.tagonist.friendbook.action.GetFriends"/>
 
 <fb:inside title="Friends">
 	

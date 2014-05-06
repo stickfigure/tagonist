@@ -8,6 +8,17 @@ being actively developed but it doesn't need to be, it's only a handful of lines
 it, go ahead and use it. It has been moved to github (from tigris.org - that's how hold this is) and
 placed in Maven Central to preserve its history. Note that package has changed from org.tagonist to
 com.voodoodyne.tagonist.
+
+## Releases
+Releases are available in Maven Central and can be downloaded from http://search.maven.org/
+
+```xml
+<dependency>
+	<groupId>com.voodoodyne.tagonist</groupId>
+	<artifactId>tagonist</artifactId>
+	<version>1.4</version>
+</dependency>
+```
 	
 ## Overview
 Tagonist is an ultra-lightweight MVC webapp framework, similar in principle to

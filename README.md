@@ -1,100 +1,63 @@
+# Tagonist
+
+Tagonist is a laughably simple java web application framework.
+
+## History
+Tagonist is a very old but very simple web framework, composed of two JSP tags. It is not
+being actively developed but it doesn't need to be, it's only a handful of lines of code. If you like
+it, go ahead and use it. It has been moved to github (from tigris.org - that's how hold this is) and
+placed in Maven Central to preserve its history. Note that package has changed from org.tagonist to
+com.voodoodyne.tagonist.
+	
+## Overview
+Tagonist is an ultra-lightweight MVC webapp framework, similar in principle to
+Struts, WebWork, or Maverick.  Like its cousins, Tagonist offers:
+
+* Clean separation of code and content - no need for scriptlets
+* Form processing by conveniently populating beans from the HTTP request attributes
+
+However, *unlike* its cousins, Tagonist:
+
+* Is trivial to learn and use.  One look at the examples and you will understand how to write your webapp immediately.  There are just two custom tags.
+* Is trivial to configure.  There no servlets to configure and no XML to muck with. Just drop the tagonist.jar in your WEB-INF/lib and start using the two tagonist custom tags in your JSPs.
+* Integrates seamlessly into any JSP-based portal or even other webapp frameworks. Your JSP includes tagonist actions, not the other way around.
+* Encourages development of fine-grained actions which can be composed arbitrarily on a page.  You don't need to have one action class per screen.
+* Allows many HTML developers to work on a project without fighting over checkouts for some sort of XML sitemap configuration file.
+* Is composed of 8 java classes and less than 500 lines of code (including whitespace). Anyone can see how it works.
+
+## Simple JSP Pages
+In essence, tagonist turns traditional MVC frameworks inside-out.  Here is a simple
+tagonist example which displays a list of bookmarks for a user:
+
+```html
+<%-- bookmarks.jsp --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="t" uri="http://www.tagonist.org/tagonist" %>
+
+<t:action var="user" type="com.example.action.GetUser"/>
+<t:action var="bookmarks" type="com.example.action.GetBookmarks"/>
+
 <html>
-<head>
- <style type="text/css">
-/* <![CDATA[ */ 
-@import "http://www.tigris.org/branding/css/tigris.css"; 
-@import "http://www.tigris.org/branding/css/inst.css"; 
-/*  ]]> */
- </style>
-  <link rel="stylesheet" type="text/css" href="http://www.tigris.org/branding/css/print.css" media="print" />
-<script src="http://www.tigris.org/branding/scripts/tigris.js" type="text/javascript">
-</script>
- <title>Tagonist Overview</title>
-</head>
-<body>
+	<head><title>Bookmarks</title></head>
+	<body>
+		<p>Here are the bookmarks for ${user.name}:</p>
+		<table>
+			<c:forEach var="mark" items="${bookmarks}">
+				<tr><td>${mark.title}</td><td>${mark.url}</td></tr>
+			</c:forEach>
+		</table>
+	</body>
+</html>
+```
+	
+This page uses the `action` tag to instantiate and execute two actions.
+The first obtains information about a user, including the user's name.  The second obtains
+a list of bookmarks for a user.  Standard JSTL tags and expressions are used to render
+the data as HTML.
 
-	<h1>Tagonist</h1>
-	<p>Tagonist is a laughably simple java web application framework.</p>
-	
-	<h2>Overview</h2>
-	<p>
-		Tagonist is an ultra-lightweight MVC webapp framework, similar in principle to
-		Struts, WebWork, or Maverick.  Like its cousins, Tagonist offers:
-	</p>
-	
-	<ul>
-		<li>Clean separation of code and content - no need for scriptlets</li>
-		<li>Form processing by conveniently populating beans from the HTTP request attributes</li>
-	</ul>
-	
-	<p>
-		However, <em>unlike</em> its cousins, Tagonist:
-	</p>
+Here is what the `GetUser` class might look like:
 
-	<ul>
-		<li>
-			Is trivial to learn and use.  One look at the examples and you will understand how to
-			write your webapp immediately.  There are just two custom tags.
-		</li>
-		<li>
-			Is trivial to configure.  There no servlets to configure and no XML to muck with.
-			Just drop the tagonist.jar in your WEB-INF/lib and start using the two tagonist
-			custom tags in your JSPs.
-		</li>
-		<li>
-			Integrates seamlessly into any JSP-based portal or even other webapp frameworks.
-			Your JSP includes tagonist actions, not the other way around.
-		</li>
-		<li>
-			Encourages development of fine-grained actions which can be composed arbitrarily
-			on a page.  You don't need to have one action class per screen.
-		</li>
-		<li>
-			Allows many HTML developers to work on a project without fighting over
-			checkouts for some sort of XML sitemap configuration file.
-		</li>
-		<li>
-			Is composed of 8 java classes and less than 500 lines of code (including whitespace).
-			Anyone can see how it works.
-		</li>
-	</ul>
-	
-	<h2>Simple JSP Pages</h2>
-	<p>
-		In essence, tagonist turns traditional MVC frameworks inside-out.  Here is a simple
-		tagonist example which displays a list of bookmarks for a user:
-	</p>
-	<pre>
-&lt;%-- bookmarks.jsp --%&gt;
-&lt;%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %&gt;
-&lt;%@ taglib prefix="t" uri="http://www.tagonist.org/tagonist" %&gt;
-
-&lt;t:action var="user" type="com.example.action.GetUser"/&gt;
-&lt;t:action var="bookmarks" type="com.example.action.GetBookmarks"/&gt;
-
-&lt;html&gt;
-	&lt;head&gt;&lt;title&gt;Bookmarks&lt;/title&gt;&lt;/head&gt;
-	&lt;body&gt;
-		&lt;p&gt;Here are the bookmarks for ${user.name}:&lt;/p&gt;
-		&lt;table&gt;
-			&lt;c:forEach var="mark" items="${bookmarks}"&gt;
-				&lt;tr&gt;&lt;td&gt;${mark.title}&lt;/td&gt;&lt;td&gt;${mark.url}&lt;/td&gt;&lt;/tr&gt;
-			&lt;/c:forEach&gt;
-		&lt;/table&gt;
-	&lt;/body&gt;
-&lt;/html&gt;
-	</pre>
-	
-	<p>
-		This page uses the <code>action</code> tag to instantiate and execute two actions.
-		The first obtains information about a user, including the user's name.  The second obtains
-		a list of bookmarks for a user.  Standard JSTL tags and expressions are used to render
-		the data as HTML.</p>
-	<p>
-		Here is what the <code>GetUser</code> class might look like:
-	</p>
-	
-	<pre>
+```java
 /** GetUser.java:  Gets a UserDetail object and sets it as the model */
 public class GetUser extends AbstractAction
 {
@@ -108,87 +71,66 @@ public class GetUser extends AbstractAction
 		this.getCtx().setModel(detail);
 	}
 }
-	</pre>
+```
 	
-	<p>
-		If you are familiar with Struts, WebWork, or Maverick, the Action class should look familiar.
-		The key details:
-	</p>
-	
-	<ul>
-		<li>
-			A fresh instance of the action class is instantiated every time the action tag is invoked.
-		</li>
-		<li>
-			Bean properties on the action instance are populated from the HTTP request parameters.  In this example, the URL would be invoked
-			like this:  http://www.example.com/bookmarks.jsp?userId=42
-		</li>
-		<li>An <code>ActionContext</code> is available to the action, which provides access to the servlet objects</li>
-		<li>
-			The action sets the object that is to become the resultant model.  If no model is explicitly set,
-			the action itself becomes the model, and its getter methods are available in the JSP.
-		</li>
-	</ul>
-	
-	<p>
-		Note that this is only one pattern of action class available; many others are possible
-		by implementing the <code>Action</code> interface instead of extending <code>AbstractAction</code>.
-	</p>
-	
-	<h2>Simple Form Processing</h2>
-	<p>
-		The typical web Model-View-Controller pattern goes something like this:
-	</p>
-	
-	<ol>
-		<li>A front servlet (the controller) receives your request</li>
-		<li>The servlet looks up configuration in an XML sitemap file to determine which action class to execute</li>
-		<li>The action class is executed, builds a data model from POJOs, and selects a view for rendering (usually just Success or Error)</li>
-		<li>The servlet determines which JSP is associated with the view (again, using the XML sitemap) and forwards</li>
-	</ol>
-	
-	<p>
-		Tagonist form processing is similar, but replaces the front controller and XML sitemap
-		with simple JSP files.  This is a much more intuitive approach:
-	</p>
-	
-	<pre>
-&lt;%-- signup.jsp --%&gt;
-&lt;%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %&gt;
+If you are familiar with Struts, WebWork, or Maverick, the Action class should look familiar. The key details:
 
-&lt;html&gt;
-	&lt;head&gt;&lt;title&gt;Signup&lt;/title&gt;&lt;/head&gt;
-	&lt;body&gt;
-		&lt;c:if test="${!empty model.error}"&gt;
-			&lt;p&gt;Error: ${model.error}&lt;p&gt;
-		&lt;/c:if&gt;
+* A fresh instance of the action class is instantiated every time the action tag is invoked.
+* Bean properties on the action instance are populated from the HTTP request parameters.  In this example, the URL would be invoked like this:  http://www.example.com/bookmarks.jsp?userId=42
+* An `ActionContext` is available to the action, which provides access to the servlet objects
+* The action sets the object that is to become the resultant model.  If no model is explicitly set, the action itself becomes the model, and its getter methods are available in the JSP.
+
+Note that this is only one pattern of action class available; many others are possible
+by implementing the `Action` interface instead of extending `AbstractAction`.
+
+## Simple Form Processing
+The typical web Model-View-Controller pattern goes something like this:
+
+1. A front servlet (the controller) receives your request
+2. The servlet looks up configuration in an XML sitemap file to determine which action class to execute
+3. The action class is executed, builds a data model from POJOs, and selects a view for rendering (usually just Success or Error)
+4. The servlet determines which JSP is associated with the view (again, using the XML sitemap) and forwards
+
+Tagonist form processing is similar, but replaces the front controller and XML sitemap
+with simple JSP files.  This is a much more intuitive approach:
+
+```html
+<%-- signup.jsp --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<html>
+	<head><title>Signup</title></head>
+	<body>
+		<c:if test="${!empty model.error}">
+			<p>Error: ${model.error}<p>
+		</c:if>
 		
-		&lt;form action="submit_signup.jsp"&gt;
-			Email:  &lt;input type="text" name="email" value="${model.email}"/&gt;
-			&lt;input type="submit" value="Submit"&gt;
-		&lt;/form&gt;
-	&lt;/body&gt;
-&lt;/html&gt;
-	</pre>
-	<hr/>
-	<pre>
-&lt;%-- signup_submit.jsp --%&gt;
-&lt;%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %&gt;
-&lt;%@ taglib prefix="t" uri="http://www.tagonist.org/tagonist" %&gt;
+		<form action="submit_signup.jsp">
+			Email:  <input type="text" name="email" value="${model.email}"/>
+			<input type="submit" value="Submit">
+		</form>
+	</body>
+</html>
+```
 
-&lt;t:action var="model" type="com.example.action.Signup"/&gt;
+```html
+<%-- signup_submit.jsp --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="t" uri="http://www.tagonist.org/tagonist" %>
 
-&lt;c:choose&gt;
-	&lt;c:when test="${empty model.error}"&gt;
-		&lt;c:redirect url="thanks.jsp"/&gt;
-	&lt;/c:when&gt;
-	&lt;c:otherwise&gt;
-		&lt;jsp:forward page="signup.jsp"/&gt;
-	&lt;/c:otherwise&gt;
-&lt;/c:choose&gt;
-	</pre>
-	<hr/>
-	<pre>
+<t:action var="model" type="com.example.action.Signup"/>
+
+<c:choose>
+	<c:when test="${empty model.error}">
+		<c:redirect url="thanks.jsp"/>
+	</c:when>
+	<c:otherwise>
+		<jsp:forward page="signup.jsp"/>
+	</c:otherwise>
+</c:choose>
+```
+
+```java
 /** Signup.java:  Form processing action for signup */
 public class Signup extends AbstractAction
 {
@@ -201,63 +143,37 @@ public class Signup extends AbstractAction
 	
 	public void execute() throws Exception
 	{
-		if (this.email == null || this.email.indexOf('@') &lt; 0)
+		if (this.email == null || this.email.indexOf('@') < 0)
 			this.error = "That is not a valid email address";
 		else
 			signupPerson(this.email);
 	}
 }
-	</pre>
+```
 	
-	<p>
-		Chronologically, this is what happens:
-	</p>
-	
-	<ol>
-		<li>User points their browser at signup.jsp</li>
-		<li>signup.jsp is processed.  There is no model, so form renders normally</li>
-		<li>User fills out form and hits submit</li>
-		<li>Browser goes to submit_signup.jsp, passing the http request parameter <code>email</code></li>
-		<li>submit_signup.jsp instantiates and executes the action class <code>Signup</code></li>
-		<li>
-			The <code>Signup</code> action validates the data and performs the signup business logic.
-			The resulting model will be the action object itself.
-		</li>
-		<li>If there were no errors, submit_signup.jsp redirects to thanks.jsp</li>
-		<li>
-			If there were any errors in the model, submit_signup.jsp forwards back to signup.jsp.
-			The model contains both the error message and the old input for pre-loading the form.
-		</li>
-	</ol>
-	
-	<h2>Conclusion</h2>
-	<p>
-		This is just a broad overview of what is possible with Tagonist.  In the
-		sample applications, you will see examples of:
-	</p>
-	
-	<ul>
-		<li>Passing parameters to action classes from JSPs</li>
-		<li>Pre-populating a form with data</li>
-		<li>Using form bean classes declared separately from the action class</li>
-		<li>Issuing redirects and forwards from action classes by throwing exceptions</li>
-	</ul>
+Chronologically, this is what happens:
 
-	<h3>Revisions</h3>
-	<ul>
-		<li><strong>1.0</strong> - Initial release</li>
-		<li>
-			<strong>1.1</strong> - Replaced "recycle" attribute with "force",
-			which has inverted meaning.  AbstractAction now populates bean properties
-			with action params.  Added Propertizer and example.
-		</li>
-		<li>
-			<strong>1.2</strong> - Improved error management. Use JDK5 generics features.
-		</li>
-		<li>
-			<strong>1.3</strong> - Removed propertize (use Project Lombok instead), uses slf4j instead of commons-logging.
-		</li>
-	</ul>
+1. User points their browser at signup.jsp
+2. signup.jsp is processed.  There is no model, so form renders normally
+3. User fills out form and hits submit
+4. Browser goes to submit_signup.jsp, passing the http request parameter `email`
+5. submit_signup.jsp instantiates and executes the action class `Signup`
+6. The `Signup` action validates the data and performs the signup business logic. The resulting model will be the action object itself.
+7. If there were no errors, submit_signup.jsp redirects to thanks.jsp
+8. If there were any errors in the model, submit_signup.jsp forwards back to signup.jsp. The model contains both the error message and the old input for pre-loading the form.
 
-</body>
-</html>
+## Conclusion
+This is just a broad overview of what is possible with Tagonist.  In the
+sample applications, you will see examples of:
+
+* Passing parameters to action classes from JSPs
+* Pre-populating a form with data
+* Using form bean classes declared separately from the action class
+* Issuing redirects and forwards from action classes by throwing exceptions
+
+## Revisions
+* 1.0 - Initial release
+* 1.1 - Replaced "recycle" attribute with "force", which has inverted meaning.  AbstractAction now populates bean properties with action params.  Added Propertizer and example.
+* 1.2 - Improved error management. Use JDK5 generics features.
+* 1.3 - Removed propertize (use Project Lombok instead), uses slf4j instead of commons-logging.
+* 1.4 - Mavenized, moved to github

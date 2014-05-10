@@ -188,3 +188,4 @@ sample applications, you will see examples of:
 * 1.2 - Improved error management. Use JDK5 generics features.
 * 1.3 - Removed propertize (use Project Lombok instead), uses slf4j instead of commons-logging.
 * 1.4 - Mavenized, moved to github
+* 1.4.1 - Built for Java6 (1.4 had moved to Java7 perhaps prematurely)
